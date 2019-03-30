@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <description>https://cn.vuejs.org/v2/guide/instance.html</description>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ foo }}</p>
+      <button v-on:click="foo = 'baz'">Change it</button>
+    </div>
+
+    <div id="example"></div>
+  </body>
+
+  <script>
+    var data = { a: 1 };
+    var vm = new Vue({
+      el: "#example",
+      data: data
+    });
+
+    var app1 = new Vue({
+      data: {
+        newTodoText: " ",
+        visitCount: 0,
+        hideCompletedTodos: false,
+        todos: [],
+        error: null
+      }
+    });
+
+    var obj = {
+      foo: "bar"
+    };
+
+    Object.freeze(obj);
+
+    new Vue({
+      el: "#app",
+      data: obj
+    });
+
+    vm.$data = data;
+    vm.$el === document.getElementById("example");
+
+    vm.$watch("a", function(newValue, oldValue) {});
+  </script>
+</html>
