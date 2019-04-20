@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+    <todo>
+        <todo-title slot="todo-title" v-bind:title="title"></todo-title>
+        <todo-items slot="todo-items" v-for="(item, index) in items" v-bind:item="item"
+                    v-bind:index="index" v-on:re="removeItem(index)"></todo-items>
+    </todo>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<script type="text/javascript">
+    Vue.component("todo", {
+        template: "  <div>\
+                        <slot name='todo-title'></slot>\
+                        <ul>\
+                            <slot name='todo-items'></slot>\
+                        </ul>\
+                        \
+                    </div>\
+        "
+    });
+
+    Vue.component("todo-title", {
+        template: "<div>{{title}}</div>",
+        props: ['title']
+    });
+
+    Vue.component("todo-items", {
+        template: "<li>{{item}} - {{index}} &nbsp; <button @click='removeB(index)'>删除</button></li>",
+        props: ['item', "index"],
+        methods: {
+            removeB: function (index) {
+                alert(1);
+                this.$emit("re", index);
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            "title": "标题",
+            "items": ["张三", "李四", "王五"]
+        },
+        methods: {
+            removeItem: function (index) {
+                alert(2);
+                this.items.splice(index, 1);
+            }
+        }
+    })
+
+
+</script>
+
+
+</body>
+</html>

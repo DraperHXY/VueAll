@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model="message">&nbsp;&nbsp;Input 内容：
+    {{message}}
+    <br/>
+    <select v-model="selected">
+        <!--<option disabled value="">请选择</option>-->
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>选中的值： {{selected}}</span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello Vue",
+            selected: ""
+        }
+    })
+</script>
+</body>
+</html>
