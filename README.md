@@ -22,3 +22,16 @@
 
 
 
+
+
+```bash
+vue init webpack App
+npm i element-ui -S
+npm install vue-router --save-dev
+npm install sass-loader node-sass --save-dev
+npm install
+```
+
+> 上面命令最好不要中断，否则错误后不容易恢复，可以使用 cpm 提高速度
+
+[Element UI](<https://element.eleme.cn/2.0/#/zh-CN>)
