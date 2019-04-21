@@ -2,10 +2,10 @@
   <div>
     <el-form ref="form" :model="form" :rules="rules" label-width="80px" class="login-box">
       <h3 class="login-title">欢迎登录</h3>
-      <el-form-item label="账号" props="username">
+      <el-form-item label="账号" prop="username">
         <el-input type="text" placeholder="请输入账号" v-model="form.username"></el-input>
       </el-form-item>
-      <el-form-item label="密码" props="password">
+      <el-form-item label="密码" prop="password">
         <el-input type="password" placeholder="请输入密码" v-model="form.password"></el-input>
       </el-form-item>
       <el-form-item>
@@ -42,7 +42,10 @@
           if (valid) {
             this.$router.push("/main");
           } else {
-            alert("验证失败");
+            this.$message({
+              message: '请输入账号或密码',
+              type: "warning"
+            });
             return false;
           }
         });
